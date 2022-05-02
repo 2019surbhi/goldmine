@@ -123,7 +123,7 @@ getUCSCTable <- function(table, genome, cachedir=NULL, version="latest", sync=TR
 
 # --------------------------------------------------------------------
 # internal function that does the syncing
-syncUCSCTable <- function(table, genome, url, cachedir)
+syncUCSCTable <- function(table, genome, url="http://hgdownload.soe.ucsc.edu/goldenPath/", cachedir)
 {
 	# Generate URLs based on the given table name
 	url.dl.txt <- paste(url, genome , "/database/",table,".txt.gz",sep="")
