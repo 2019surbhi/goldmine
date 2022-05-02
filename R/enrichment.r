@@ -33,7 +33,7 @@ drawGenomePool <- function(query, n, chrs=NULL, genome, cachedir, sync=TRUE)
 	chromsizes <- chromsizes[chromsizes$chrom %in% chrs,]
 
 	# Get gaps GR
-	gaps <- getUCSCTable("gap", genome, cachedir, sync=sync)
+	gaps <- getUCSCTable("gap", genome, cachedir, url="http://hgdownload.soe.ucsc.edu/goldenPath/",sync=sync)
 	gaps.gr <- with(gaps, GRanges(seqnames=chrom, ranges=IRanges(start=chromStart+1, end=chromEnd)))
 
 	# For each size, draw n random non-gap positions
