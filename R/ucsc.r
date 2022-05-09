@@ -16,7 +16,7 @@
 #; @param fread Use fread() from data.table and return a data.table object rather than the possibly much slower read.table() from base. Set to FALSE if you want a data.frame returned rather than a data.table. Default: TRUE
 #' @return A data.frame or data.table of the desired UCSC table.
 #' @export
-getUCSCTable <- function(table, genome, cachedir=NULL, version="latest", sync=TRUE, url="http://hgdownload.soe.ucsc.edu/goldenPath/", fread=TRUE)
+getUCSCTable <- function(table="chromInfo", genome, cachedir=NULL, version="latest", sync=TRUE, url="http://hgdownload.soe.ucsc.edu/goldenPath/", fread=TRUE)
 {
 	# If we need to sync and a cachedir path has been given
 	if((!is.null(cachedir))&(sync==TRUE))
