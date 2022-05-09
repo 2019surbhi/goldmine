@@ -17,7 +17,7 @@
 #' @param sync If TRUE, then check if newer versions of UCSC tables are available and download them if so. If FALSE, skip this check. Can be used to freeze data versions in an analysis-specific cachedir for reproducibility.
 #' @return A list: "context" shows a percent overlap for each range in the query set with gene model regions and each feature set ("wide" format - same number of rows as the query and in the same order), "genes" contains a detailed view of each query region overlap with individual gene isoforms ("long" format - a row for each pair of query and isoform overlaps), "features" is a list of tables which for each table given in the "features" argument which contain a row for each instance of a query region overlapping with a feature region (also "long" format).
 #' @export
-goldmine <- function(query, table_prefix='chromInfo', genes=getGenes(geneset="ucsc", genome=genome, cachedir=cachedir), features=list(), promoter=c(1000,500), end3=c(1000,1000), contextonly=FALSE, genome, cachedir, sync=TRUE)
+goldmine <- function(query, genes=getGenes(geneset="ucsc", genome=genome, cachedir=cachedir), features=list(), promoter=c(1000,500), end3=c(1000,1000), contextonly=FALSE, genome, cachedir, sync=TRUE)
 {
 	# Validate and convert query input
 	query.gr <- makeGRanges(query)
@@ -29,7 +29,7 @@ goldmine <- function(query, table_prefix='chromInfo', genes=getGenes(geneset="uc
 	#features.dt <- lapply(features,makeDT)
 
 	# Get chromosome lengths
-	chromInfo <- getUCSCTable(table, genome, cachedir, sync=sync)
+	chromInfo <- getUCSCTable("chromInfo", genome, cachedir, sync=sync)
 	chromInfo$chr <- chromInfo$chrom
 
 	# Set key ID fields for easy joins
